@@ -35,8 +35,8 @@
 | List cars by id             | 2 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
 | Report log globally         | 4 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
 | Handler execptions globally | 3 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
-| Unit Test                   | 1 days              |  Work in progress   | <ul><li>- [] completed</li><li>- [x] todo</li></ul>
-| Scheduled of cars           | 2 days              |  Work in progress   | <ul><li>- [] completed</li><li>- [x] todo</li></ul>
+| Unit Test                   | 1 days              |  Work in progress   | <ul><li>- [ ] completed</li><li>- [x] todo</li></ul>
+| Scheduled of cars           | 2 days              |  Work in progress   | <ul><li>- [ ] completed</li><li>- [x] todo</li></ul>
 
 <p align="center">
   <a href="https://github.com/lucasmaciel1996/netjs-cars" target="blank"><img src="./doc/img/app.png" width="200" alt="nestjs-cars" /></a>
