@@ -1,3 +1,4 @@
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -21,6 +22,31 @@
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+
+# Nestjs-Cars
+
+# Features
+
+
+| Stage                       | Time to complete    | Current Status      |                     Finished                        | 
+|-----------------------------|---------------------|---------------------|-----------------------------------------------------|
+| Docker                      | 2 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
+| List all cars               | 2 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
+| List cars by id             | 2 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
+| Report log globally         | 4 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
+| Handler execptions globally | 3 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
+| Unit Test                   | 1 days              |  Work in progress   | <ul><li>- [] completed</li><li>- [x] todo</li></ul>
+| Scheduled of cars           | 2 days              |  Work in progress   | <ul><li>- [] completed</li><li>- [x] todo</li></ul>
+
+<p align="center">
+  <a href="https://github.com/lucasmaciel1996/netjs-cars" target="blank"><img src="./doc/img/app.png" width="200" alt="nestjs-cars" /></a>
+  <a href="https://github.com/lucasmaciel1996/netjs-cars" target="blank"><img src="./doc/img/log.png" width="200" alt="nestjs-cars" /></a>
+  <a href="https://github.com/lucasmaciel1996/netjs-cars" target="blank"><img src="./doc/img/log_1.png" width="200" alt="nestjs-cars" /></a>
+  <a href="https://github.com/lucasmaciel1996/netjs-cars" target="blank"><img src="./doc/img/test.png" width="200" alt="nestjs-cars" /></a>
+</p>
+
+
+
 
 ## Description
 
