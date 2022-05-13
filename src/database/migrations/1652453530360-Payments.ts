@@ -5,37 +5,41 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export class Cars1652282507548 implements MigrationInterface {
+export class Payments1652453530360 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'cars',
-        schema: 'vehicles',
+        name: 'payments',
+        schema: 'financial',
         columns: [
           {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
             isUnique: true,
-            generationStrategy: 'uuid',
-            default: `uuid_generate_v4()`,
+            isNullable: false,
           },
           {
-            name: 'name',
-            type: 'varchar(100)',
+            name: 'reservation_id',
+            type: 'uuid',
           },
           {
-            name: 'plate',
-            type: 'varchar(15)',
+            name: 'payment_fisrt',
+            type: 'timestamptz',
           },
           {
-            name: 'brand_id',
+            name: 'amount',
+            type: 'decimal(12,2)',
+          },
+          {
+            name: 'type',
             type: 'integer',
+            default: 1,
           },
           {
-            name: 'created_at',
-            type: 'timestamp',
-            default: 'now()',
+            name: 'payment_amount',
+            type: 'integer',
+            isNullable: true,
           },
           {
             name: 'updated_at',
@@ -52,19 +56,22 @@ export class Cars1652282507548 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey(
-      'vehicles.cars',
+      'financial.payments',
       new TableForeignKey({
-        columnNames: ['brand_id'],
+        columnNames: ['reservation_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'vehicles.brand',
+        referencedTableName: 'schedule.reservations',
         onDelete: 'CASCADE',
-        name: 'fk_cars_brand',
+        name: 'fk_payment_reservations',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('vehicles.cars', 'fk_cars_brand');
-    await queryRunner.dropTable('vehicles.cars');
+    await queryRunner.dropForeignKey(
+      'financial.payments',
+      'fk_payment_reservations',
+    );
+    await queryRunner.dropTable('schedule.reservations');
   }
 }

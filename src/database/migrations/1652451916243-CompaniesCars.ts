@@ -5,12 +5,12 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export class Cars1652282507548 implements MigrationInterface {
+export class CompaniesCars1652451916243 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'cars',
-        schema: 'vehicles',
+        name: 'companies_cars',
+        schema: 'companies',
         columns: [
           {
             name: 'id',
@@ -21,16 +21,17 @@ export class Cars1652282507548 implements MigrationInterface {
             default: `uuid_generate_v4()`,
           },
           {
-            name: 'name',
-            type: 'varchar(100)',
+            name: 'company_id',
+            type: 'uuid',
           },
           {
-            name: 'plate',
-            type: 'varchar(15)',
+            name: 'car_id',
+            type: 'uuid',
           },
           {
-            name: 'brand_id',
-            type: 'integer',
+            name: 'is_active',
+            type: 'boolean',
+            default: true,
           },
           {
             name: 'created_at',
@@ -52,19 +53,37 @@ export class Cars1652282507548 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey(
-      'vehicles.cars',
+      'companies.companies_cars',
       new TableForeignKey({
-        columnNames: ['brand_id'],
+        columnNames: ['company_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'vehicles.brand',
+        referencedTableName: 'companies.companies',
         onDelete: 'CASCADE',
-        name: 'fk_cars_brand',
+        name: 'fk_company_companies',
+      }),
+    );
+
+    await queryRunner.createForeignKey(
+      'companies.companies_cars',
+      new TableForeignKey({
+        columnNames: ['car_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'vehicles.cars',
+        onDelete: 'CASCADE',
+        name: 'fk_car_companies',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('vehicles.cars', 'fk_cars_brand');
-    await queryRunner.dropTable('vehicles.cars');
+    await queryRunner.dropForeignKey(
+      'companies.companies_cars',
+      'fk_car_companies',
+    );
+    await queryRunner.dropForeignKey(
+      'companies.companies_cars',
+      'fk_company_companies',
+    );
+    await queryRunner.dropTable('companies.companies_cars');
   }
 }

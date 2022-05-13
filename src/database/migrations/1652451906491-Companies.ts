@@ -1,16 +1,11 @@
-import {
-  MigrationInterface,
-  QueryRunner,
-  Table,
-  TableForeignKey,
-} from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class Cars1652282507548 implements MigrationInterface {
+export class Companies1652451906491 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'cars',
-        schema: 'vehicles',
+        name: 'companies',
+        schema: 'companies',
         columns: [
           {
             name: 'id',
@@ -25,12 +20,14 @@ export class Cars1652282507548 implements MigrationInterface {
             type: 'varchar(100)',
           },
           {
-            name: 'plate',
-            type: 'varchar(15)',
+            name: 'id_legacy',
+            type: 'varchar(100)',
+            isNullable: true,
           },
           {
-            name: 'brand_id',
-            type: 'integer',
+            name: 'is_active',
+            type: 'boolean',
+            default: true,
           },
           {
             name: 'created_at',
@@ -50,21 +47,9 @@ export class Cars1652282507548 implements MigrationInterface {
         ],
       }),
     );
-
-    await queryRunner.createForeignKey(
-      'vehicles.cars',
-      new TableForeignKey({
-        columnNames: ['brand_id'],
-        referencedColumnNames: ['id'],
-        referencedTableName: 'vehicles.brand',
-        onDelete: 'CASCADE',
-        name: 'fk_cars_brand',
-      }),
-    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('vehicles.cars', 'fk_cars_brand');
-    await queryRunner.dropTable('vehicles.cars');
+    await queryRunner.dropTable('companies.companies');
   }
 }

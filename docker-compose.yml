@@ -11,10 +11,11 @@ services:
       API_HOST: http://localhost:3001
       #DB - local
       POSTGRES_HOST: db
-      POSTGRES_DB: wtp
+      POSTGRES_DB: sis_cars
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
       POSTGRES_PORT: 5432
+      POSTGRES_MAX_CONNECTION: 20
     depends_on:
       - db
     volumes:
@@ -29,7 +30,7 @@ services:
   db:
     image: postgres:latest
     environment:
-      POSTGRES_DB: wtp
+      POSTGRES_DB: sis_cars
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
     ports:

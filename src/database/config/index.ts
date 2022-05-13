@@ -4,11 +4,11 @@ import { resolve } from 'path';
 
 const configDatabase: TypeOrmModuleOptions = {
   type: 'postgres',
-  host: 'db',
-  port: 5432,
-  username: 'root',
-  password: 'password',
-  database: 'wtp',
+  host: process.env.POSTGRES_HOST,
+  port: Number(process.env.POSTGRES_PORT),
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
   logging: ['query'],
   entities: [resolve(__dirname, '..', '..', '**/*.entity{.ts,.js}')],
   migrations: [resolve(__dirname, '..', 'migrations/*{.ts,.js}')],
@@ -17,7 +17,7 @@ const configDatabase: TypeOrmModuleOptions = {
   },
   synchronize: false,
   extra: {
-    max: 20,
+    max: process.env.POSTGRES_MAX_CONNECTION || 20,
   },
 };
 

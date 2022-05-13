@@ -10,10 +10,10 @@ export class DefaultAttributes {
   id: string;
 
   @CreateDateColumn({ default: 'now()', name: 'created_at' })
-  createdAt: Date;
+  createdAt?: Date;
 
   @UpdateDateColumn({ default: 'now()', name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt?: Date;
 
   @DeleteDateColumn({ default: 'now()', name: 'deleted_at', nullable: true })
   deletedAt?: Date;

@@ -36,6 +36,8 @@
 | Report log globally         | 4 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
 | Handler execptions globally | 3 hour              |  Done               | <ul><li>- [x] completed</li><li>- [x] todo</li></ul>
 | Unit Test                   | 1 days              |  Work in progress   | <ul><li>- [ ] completed</li><li>- [x] todo</li></ul>
+| Authentication              | 1 days              |  Work in progress   | <ul><li>- [ ] completed</li><li>- [x] todo</li></ul>
+| Authoriration               | 1 days              |  Work in progress   | <ul><li>- [ ] completed</li><li>- [x] todo</li></ul>
 | Scheduled of cars           | 2 days              |  Work in progress   | <ul><li>- [ ] completed</li><li>- [x] todo</li></ul>
 
 <p align="center">
