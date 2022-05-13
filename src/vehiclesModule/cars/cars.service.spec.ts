@@ -1,6 +1,6 @@
+import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { LoggingModule } from '../../../libs/logging/src';
 import { TestUtil } from '../../shared/TestUtil';
 import { CarsService } from './cars.service';
 import { CarsRepository } from './repositories/cars.repository';
@@ -13,7 +13,7 @@ describe('CarsService', () => {
     getById: jest.fn(),
   };
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       providers: [
         CarsService,
@@ -37,6 +37,7 @@ describe('CarsService', () => {
       mockRepository.getAll.mockReturnValue([]);
 
       expect(await carsService.index()).toStrictEqual([]);
+      expect(mockRepository.getAll).toHaveBeenCalledTimes(1);
     });
 
     it('shoud be able return an array of cars ', async () => {
@@ -44,6 +45,7 @@ describe('CarsService', () => {
       mockRepository.getAll.mockReturnValue(car);
 
       expect(await carsService.index()).toStrictEqual(car);
+      expect(mockRepository.getAll).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -54,13 +56,14 @@ describe('CarsService', () => {
       mockRepository.getById.mockReturnValue(car);
 
       expect(await carsService.findOne('')).toStrictEqual(car);
+      expect(mockRepository.getById).toHaveBeenCalledTimes(1);
     });
 
     it('should be able return erro car not found', async () => {
       mockRepository.getById.mockReturnValue(null);
-      expect(async () => await carsService.findOne('')).rejects.toThrowError(
-        'Car not found!!',
-      );
+
+      expect(carsService.findOne('')).rejects.toBeInstanceOf(NotFoundException);
+      expect(mockRepository.getById).toHaveBeenCalledTimes(1);
     });
   });
 });
