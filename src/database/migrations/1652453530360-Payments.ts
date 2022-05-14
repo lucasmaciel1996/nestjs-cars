@@ -24,7 +24,7 @@ export class Payments1652453530360 implements MigrationInterface {
             type: 'uuid',
           },
           {
-            name: 'payment_fisrt',
+            name: 'payment_first',
             type: 'timestamptz',
           },
           {
@@ -60,7 +60,7 @@ export class Payments1652453530360 implements MigrationInterface {
       new TableForeignKey({
         columnNames: ['reservation_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'schedule.reservations',
+        referencedTableName: 'business_unit_service.reservations',
         onDelete: 'CASCADE',
         name: 'fk_payment_reservations',
       }),
@@ -72,6 +72,6 @@ export class Payments1652453530360 implements MigrationInterface {
       'financial.payments',
       'fk_payment_reservations',
     );
-    await queryRunner.dropTable('schedule.reservations');
+    await queryRunner.dropTable('financial.payments');
   }
 }

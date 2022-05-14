@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { TestUtil } from '../../shared/TestUtil';
+import { TestUtil } from '../../shared/test/TestUtil';
 import { CarsController } from './cars.controller';
 import { CarsService } from './cars.service';
 

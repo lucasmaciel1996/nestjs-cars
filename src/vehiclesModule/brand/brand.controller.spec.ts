@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { TestUtil } from '../../shared/TestUtil';
+import { TestUtil } from '../../shared/test/TestUtil';
 import { BrandController } from './brand.controller';
 import { BrandService } from './brand.service';
 

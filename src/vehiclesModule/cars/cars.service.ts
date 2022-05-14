@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LoggingService } from '../../../libs/logging/src';
 import { CarsRepository } from './repositories/cars.repository';
 
 @Injectable()

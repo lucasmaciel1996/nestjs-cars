@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { TestUtil } from '../../shared/TestUtil';
+import { TestUtil } from '../../shared/test/TestUtil';
 import { BrandService } from './brand.service';
 import { BrandRepository } from './repositories/brand.repository';
 

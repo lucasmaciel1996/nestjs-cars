@@ -10,7 +10,7 @@ export class Cars1652282507548 implements MigrationInterface {
     await queryRunner.createTable(
       new Table({
         name: 'cars',
-        schema: 'vehicles',
+        schema: 'vehicle',
         columns: [
           {
             name: 'id',
@@ -52,11 +52,11 @@ export class Cars1652282507548 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey(
-      'vehicles.cars',
+      'vehicle.cars',
       new TableForeignKey({
         columnNames: ['brand_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'vehicles.brand',
+        referencedTableName: 'vehicle.brand',
         onDelete: 'CASCADE',
         name: 'fk_cars_brand',
       }),
@@ -64,7 +64,7 @@ export class Cars1652282507548 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('vehicles.cars', 'fk_cars_brand');
-    await queryRunner.dropTable('vehicles.cars');
+    await queryRunner.dropForeignKey('vehicle.cars', 'fk_cars_brand');
+    await queryRunner.dropTable('vehicle.cars');
   }
 }

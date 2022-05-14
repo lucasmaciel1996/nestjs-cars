@@ -1,7 +1,8 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { TestUtil } from '../../shared/TestUtil';
+import { TestUtil } from '../../shared/test/TestUtil';
+
 import { CarsService } from './cars.service';
 import { CarsRepository } from './repositories/cars.repository';
 

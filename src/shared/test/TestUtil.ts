@@ -1,5 +1,5 @@
-import { Brand } from '../vehiclesModule/brand/entities/brancd.entity';
-import { Cars } from '../vehiclesModule/cars/entities/cars.entity';
+import { Brand } from '../../vehiclesModule/brand/entities/brancd.entity';
+import { Cars } from '../../vehiclesModule/cars/entities/cars.entity';
 
 export class TestUtil {
   static giveReturnValidListCars(): Cars[] {

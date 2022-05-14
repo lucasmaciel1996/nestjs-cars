@@ -1,15 +1,15 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class Brand1652281068880 implements MigrationInterface {
+export class BusinessUnitProducts1652451999093 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'brand',
-        schema: 'vehicle',
+        name: 'business_unit_products',
+        schema: 'product_config',
         columns: [
           {
             name: 'id',
-            type: 'integer',
+            type: 'serial4',
             isPrimary: true,
             isUnique: true,
             isNullable: false,
@@ -40,20 +40,15 @@ export class Brand1652281068880 implements MigrationInterface {
     await queryRunner.manager
       .createQueryBuilder()
       .insert()
-      .into('vehicle.brand', ['id', 'slug'])
+      .into('product_config.business_unit_products', ['id', 'slug'])
       .values([
-        { id: 1, slug: 'Fiat' },
-        { id: 2, slug: 'Mercedes' },
-        { id: 3, slug: 'Audi' },
-        { id: 4, slug: 'BMW' },
-        { id: 5, slug: 'Ford' },
-        { id: 6, slug: 'Ferrari' },
-        { id: 7, slug: 'Kia' },
+        { id: 1, slug: 'CarReservations' },
+        { id: 2, slug: 'BarberReservations' },
       ])
       .execute();
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('vehicle.brand');
+    await queryRunner.dropTable('product_config.business_unit_products');
   }
 }

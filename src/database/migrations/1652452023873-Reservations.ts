@@ -10,7 +10,7 @@ export class Reservations1652452023873 implements MigrationInterface {
     await queryRunner.createTable(
       new Table({
         name: 'reservations',
-        schema: 'schedule',
+        schema: 'business_unit_service',
         columns: [
           {
             name: 'id',
@@ -20,16 +20,16 @@ export class Reservations1652452023873 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'company_id',
-            type: 'uuid',
+            name: 'business_unit_product_id',
+            type: 'int4',
           },
           {
-            name: 'car_id',
+            name: 'product_id',
             type: 'uuid',
           },
           {
             name: 'status',
-            type: 'integer',
+            type: 'int4',
             default: 1,
           },
           {
@@ -55,37 +55,23 @@ export class Reservations1652452023873 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey(
-      'schedule.reservations',
+      'business_unit_service.reservations',
       new TableForeignKey({
-        columnNames: ['company_id'],
+        columnNames: ['business_unit_product_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'companies.companies',
+        referencedTableName: 'product_config.business_unit_products',
         onDelete: 'CASCADE',
-        name: 'fk_reservation_companies',
-      }),
-    );
-
-    await queryRunner.createForeignKey(
-      'schedule.reservations',
-      new TableForeignKey({
-        columnNames: ['car_id'],
-        referencedColumnNames: ['id'],
-        referencedTableName: 'vehicles.cars',
-        onDelete: 'CASCADE',
-        name: 'fk_reservation_cars',
+        name: 'fk_business_unit_products_reservations',
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey(
-      'schedule.reservations',
-      'fk_reservation_companies',
+      'business_unit_service.reservations',
+      'fk_business_unit_products_reservations',
     );
-    await queryRunner.dropForeignKey(
-      'schedule.reservations',
-      'fk_reservation_cars',
-    );
-    await queryRunner.dropTable('schedule.reservations');
+
+    await queryRunner.dropTable('business_unit_service.reservations');
   }
 }

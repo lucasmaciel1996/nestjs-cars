@@ -5,7 +5,7 @@ export class Companies1652451906491 implements MigrationInterface {
     await queryRunner.createTable(
       new Table({
         name: 'companies',
-        schema: 'companies',
+        schema: 'business_unit',
         columns: [
           {
             name: 'id',
@@ -30,6 +30,11 @@ export class Companies1652451906491 implements MigrationInterface {
             default: true,
           },
           {
+            name: 'score',
+            type: 'smallint',
+            default: 0,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
@@ -50,6 +55,6 @@ export class Companies1652451906491 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('companies.companies');
+    await queryRunner.dropTable('business_unit.companies');
   }
 }
